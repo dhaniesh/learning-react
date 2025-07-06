@@ -4,8 +4,8 @@ import { CoreConcepts } from "./components/CoreConcepts.jsx";
 import { Header } from "./components/Header/Header.jsx";
 import { TabButton } from "./components/TabButton.jsx";
 
-function handleClick() {
-  console.log("Click triggered from function written in App.jsx");
+function handleSelect(selectedButton) {
+  console.log(selectedButton);
 }
 
 function App() {
@@ -29,10 +29,10 @@ function App() {
 
         <section id="examples">
           <menu>
-            <TabButton onSelect={handleClick}>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={() => handleSelect('components')}>Components</TabButton>
+            <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
         </section>
       </main>
