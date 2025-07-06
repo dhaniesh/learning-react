@@ -1,10 +1,21 @@
+
+const reactDescriptions = ["Fundamentals", "Crutial", "Core"]
+
+
+/**
+ * Function to return a random number between 0 and input
+*/
+function getRandDesc(max) {
+  return Math.floor(Math.random() * max)
+}
+
 function Header() {
   return (
     <header>
       <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
       <h1>React Essentials</h1>
       <p>
-        Fundamental React concepts you will need for almost any app you are
+        {reactDescriptions[getRandDesc(reactDescriptions.length)]} React concepts you will need for almost any app you are
         going to build!
       </p>
     </header>
