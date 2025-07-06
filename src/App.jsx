@@ -1,6 +1,8 @@
 import reactImage from "./assets/react-core-concepts.png"
-const reactDescriptions = ["Fundamentals", "Crutial", "Core"]
+import componentsImage from "./assets/components.png"
+import { CORE_CONCEPTS } from "./data.js"
 
+const reactDescriptions = ["Fundamentals", "Crutial", "Core"]
 
 /**
  * Function to return a random number between 0 and input
@@ -23,12 +25,46 @@ function Header() {
   );
 }
 
+function CoreConcepts(props) {
+  return (
+    <li>
+      <img src={props.image} alt="Image" />
+      <h3>{props.title}</h3>
+      <p>{props.description}</p>
+    </li>
+  )
+}
+
+// Props with object destructuring
+// function CoreConcepts({image, title, description}) {
+//   return (
+//     <li>
+//       <img src={image} alt="Image" />
+//       <h3>{title}</h3>
+//       <p>{description}</p>
+//     </li>
+//   )
+// }
+
 function App() {
   return (
     <div>
       <Header />
       <main>
-        <h2>Time to get started!</h2>
+        <section id="core-concepts">
+          <h2>Core concepts</h2>
+          <ul>
+            <CoreConcepts
+              title="Components"
+              description="The core UI building block"
+              image={componentsImage}
+            />
+            <CoreConcepts {...CORE_CONCEPTS[1]} />
+            <CoreConcepts {...CORE_CONCEPTS[2]} />
+            <CoreConcepts {...CORE_CONCEPTS[3]} />
+          </ul>
+
+        </section>
       </main>
     </div>
   );
