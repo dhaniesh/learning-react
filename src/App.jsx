@@ -1,50 +1,8 @@
-import reactImage from "./assets/react-core-concepts.png"
-import componentsImage from "./assets/components.png"
-import { CORE_CONCEPTS } from "./data.js"
-
-const reactDescriptions = ["Fundamentals", "Crutial", "Core"]
-
-/**
- * Function to return a random number between 0 and input
-*/
-function getRandDesc(max) {
-  return Math.floor(Math.random() * max)
-}
-
-function Header() {
-  const description = reactDescriptions[getRandDesc(reactDescriptions.length)];
-  return (
-    <header>
-      <img src={reactImage} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
-
-function CoreConcepts(props) {
-  return (
-    <li>
-      <img src={props.image} alt="Image" />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  )
-}
-
-// Props with object destructuring
-// function CoreConcepts({image, title, description}) {
-//   return (
-//     <li>
-//       <img src={image} alt="Image" />
-//       <h3>{title}</h3>
-//       <p>{description}</p>
-//     </li>
-//   )
-// }
+import componentsImage from "./assets/components.png";
+import { CORE_CONCEPTS } from "./data.js";
+import { CoreConcepts } from "./components/CoreConcepts.jsx";
+import { Header } from "./components/Header/Header.jsx";
+import { TabButton } from "./components/TabButton.jsx";
 
 function App() {
   return (
@@ -63,7 +21,15 @@ function App() {
             <CoreConcepts {...CORE_CONCEPTS[2]} />
             <CoreConcepts {...CORE_CONCEPTS[3]} />
           </ul>
+        </section>
 
+        <section id="examples">
+          <menu>
+              <TabButton>Components</TabButton>
+              <TabButton>JSX</TabButton>
+              <TabButton>Props</TabButton>
+              <TabButton>State</TabButton>
+          </menu>
         </section>
       </main>
     </div>
