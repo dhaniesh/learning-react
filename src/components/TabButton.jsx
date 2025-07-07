@@ -1,8 +1,10 @@
-export function TabButton({children, onSelect}) {
+export function TabButton({ children, onSelect, isSelected }) {
   // Here children is a special props, the value refers to the items between the tags
   return (
     <li>
-      <button onClick={onSelect}>{children}</button>
+      <button className={isSelected ? "active" : undefined} onClick={onSelect}>
+        {children}
+      </button>
     </li>
   );
 }
