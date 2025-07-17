@@ -27,7 +27,6 @@ function App() {
     gameBoard[row][col] = player;
   }
 
-
   function handleSelectSquare(rowIndex, colIndex) {
     // using arrow functions, react inputs the previous state when setState hook is used
     setGameTurns((prevTurns) => {
