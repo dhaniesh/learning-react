@@ -4,6 +4,15 @@ import UserInput from "./components/UserInput.jsx";
 import Results from "./components/Results.jsx";
 
 function App() {
+  const [userInput, setUserInput] = useState({
+    initialInvestment: 10000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10,
+  });
+
+  const inputValid = userInput.duration > 0
+
   function handleChange(inputIdentifier, newValue) {
     setUserInput((prevInput) => {
       return {
@@ -13,17 +22,12 @@ function App() {
     });
   }
 
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
   return (
     <>
       <Header />
       <UserInput userInput={userInput} handleChange={handleChange} />
-      <Results input={userInput}/>
+      {!inputValid && <p className="center">Please enter a duration greater than zero</p>}
+      {inputValid && <Results input={userInput} />}
     </>
   );
 }
