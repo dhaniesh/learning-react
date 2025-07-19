@@ -13,16 +13,15 @@ export default function TimerChallenge({ title, targetTime }) {
   }
 
   const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
-
   if (timeRemaining <= 0) {
     clearInterval(timer.current);
     dialog.current.open();
   }
 
-  function handleReset(){
+  function handleReset() {
     setTimeRemaining(targetTime * 1000);
   }
- 
+
   function handleStop() {
     clearInterval(timer.current);
     dialog.current.open();
