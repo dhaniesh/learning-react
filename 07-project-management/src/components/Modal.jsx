@@ -14,9 +14,9 @@ const Modal = function Modal({ children, ref, buttonCaption }) {
   return createPortal(
     <dialog ref={dialog} className="backdrop:bg-stone-900/90 p-4 rounder-md shadow-md">
       {children}
-      <form action="dialog" className=" mt-4 text-right">
-        <Button>{buttonCaption}</Button>
-      </form>
+      <div className=" mt-4 text-right">
+        <Button onClick={() => dialog.current.close()}>{buttonCaption}</Button>
+      </div>
     </dialog>,
     document.getElementById("modal-root")
   );
