@@ -1,5 +1,5 @@
 import React from "react";
-import logoImg from "../assets/quiz.logo.png";
+import logoImg from '../assets/quiz-logo.png';
 function Header() {
   return (
     <header>
