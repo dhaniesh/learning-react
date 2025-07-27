@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import QUESTIONS from "../questions.js";
 import quizCompleteImg from "../assets/quiz-complete.png";
-import QuestionTimer from "./QuestionTimer.jsx";
-import { useCallback } from "react";
+import Question from "./Question.jsx";
+
 function Quiz() {
   const [answerState, setAnsweredState] = useState("");
   const [userAnswers, setUserAnswers] = useState([]);
@@ -20,9 +20,6 @@ function Quiz() {
     );
   }
 
-  const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers].sort(
-    () => Math.random() - 0.5
-  );
   const handleSelectAnswer = useCallback(
     function handleSelectAnswer(selectedAnswer) {
       setAnsweredState("answered");
@@ -52,37 +49,15 @@ function Quiz() {
   return (
     <div id="quiz">
       <div id="question">
-        <QuestionTimer
+        <Question
           key={activeQuestionIndex}
-          timeout={10000}
-          onTimeout={handleSkipAnswer}
+          questionText={QUESTIONS[activeQuestionIndex].text}
+          answers={QUESTIONS[activeQuestionIndex].answers}
+          onSelectAnswer={handleSelectAnswer}
+          answerState={answerState}
+          selectedAnswer={userAnswers[userAnswers.length - 1]}
+          onSkipAnswer={handleSkipAnswer}
         />
-        <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-        <ul id="answers">
-          {shuffledAnswers.map((answer) => {
-            const isSelected = userAnswers[userAnswers.length - 1] === answer ;
-            let cssClass = "";
-            if (answerState === "answered" && isSelected) {
-              cssClass = "selected";
-            }
-            if (
-              (answerState === "correct" || answerState === "wrong") &&
-              isSelected
-            ) {
-              cssClass = answerState;
-            }
-            return (
-              <li key={answer} className="answer">
-                <button
-                  onClick={() => handleSelectAnswer(answer)}
-                  className={cssClass}
-                >
-                  {answer}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
       </div>
     </div>
   );
