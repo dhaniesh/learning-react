@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Component, useState } from 'react';
 import User from './User';
 
 import classes from './Users.module.css';
