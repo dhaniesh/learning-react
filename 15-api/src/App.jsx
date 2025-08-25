@@ -35,7 +35,7 @@ function App() {
     });
 
     // update the data to backend
-    const response = await updateUserSelectedPlaces([selectedPlace, ...prevPickedPlaces]);
+    const response = await updateUserSelectedPlaces([selectedPlace, ...userPlaces]);
   }
 
   const handleRemovePlace = useCallback(async function handleRemovePlace() {
